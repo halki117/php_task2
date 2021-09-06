@@ -1,12 +1,8 @@
 <?php 
 
+$fizz_num = $_POST['fizz_num'];
 
-$fizz_num = (int)$_POST['fizz_num'];
-
-$buzz_num = (int)$_POST['buzz_num'];
-
-var_dump($fizz_num);
-var_dump($buzz_num);
+$buzz_num = $_POST['buzz_num'];
 
 ?>
 
@@ -28,26 +24,23 @@ var_dump($buzz_num);
     <p><input type="hidden" value="token"></p>
   </form>
 
-  <?php
-    $i = 1;
-    while( $fizz_num < 100 && $buzz_num < 100){ ?>
-      <?php  if( $fizz_num % (int)$_POST['buzz_num'] === 0 ){ ?>
-        <p><?php echo "fizzbuzz"."\t".$fizz_num?></p>
-      <?php } else { ?>
-      <p>fizz<?php echo $fizz_num ; ?></p>
-      <?php } ?>
-      <?php  if($buzz_num % (int)$_POST['fizz_num'] === 0 ){ ?>
-        <p><?php echo "fizzbuzz"."\t".$buzz_num?></p>
-      <?php } else { ?>
-      <p>buzz<?php echo $buzz_num ; ?></p>
-      <?php } ?>
+  <p>【出力】</p>
+  <?php 
+  if( $fizz_num !== 0 && $buzz_num !==0 && ctype_digit($fizz_num) && ctype_digit($buzz_num)){
+    for ( $i = 1 ; $i < 100; $i++) {
+    
+      if (($i % $fizz_num === 0) && ($i % $buzz_num === 0)) {
+          echo 'FizzBuzz'."\t".$i."<br />";
+      } elseif ($i % $fizz_num === 0) {
+          echo 'Fizz'."\t".$i."<br />";
+      } elseif ($i % $buzz_num === 0) {
+          echo 'Buzz'."\t".$i."<br />";
+      }
+    }
+  } else {
+    echo "整数値を入力して下さい。";
+  }
+  ?>
 
-      <?php
-      $i++; 
-      $fizz_num =  (int)$_POST['fizz_num'] * $i ;
-      $buzz_num =  (int)$_POST['buzz_num'] * $i ;
-      ?>
-  <?php }?>
-  
 </body>
 </html>
