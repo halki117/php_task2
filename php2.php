@@ -39,7 +39,7 @@ $token = $_SESSION['token'];
   if($_POST['submit']){
 
     // 値が 0（空文字）、文字 で送信された場合は”整数値を入力してください”と表示する。
-    // ctype_digit関数は文字型の値が数字であるかを判定する。数字であればtrueを返す（しかし例えば 1.5 や 1a など数字意外に小数点や文字が含まれていた場合は該当しないのでfalseを返す）
+    // ctype_digit関数は文字型の値が数字であるかを判定する。数字であればtrueを返す（しかし例えば 1.5 や 1a など数字以外に小数点や文字が含まれていた場合は該当しないのでfalseを返す）
     if( $fizz_num !== 0 && $buzz_num !==0 && ctype_digit($fizz_num) && ctype_digit($buzz_num)){
       for ( $i = 1 ; $i < 100; $i++) {
       
